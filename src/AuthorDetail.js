@@ -6,6 +6,7 @@ import BookTable from "./BookTable";
 // Stores
 import authorStore from "./stores/AuthorStore";
 import bookStore from "./stores/BookStore";
+import AddBook from "./AddBookModal";
 
 class AuthorDetail extends Component {
   render() {
@@ -23,6 +24,7 @@ class AuthorDetail extends Component {
             alt={author.first_name + " " + author.last_name}
           />
         </div>
+        <AddBook author={author} />
         <BookTable books={books} />
       </div>
     );

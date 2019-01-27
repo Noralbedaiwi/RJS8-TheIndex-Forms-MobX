@@ -1,25 +1,23 @@
 import React, { Component } from "react";
 
-import authorStore from "../stores/AuthorStore";
+import BookStore from "../stores/BookStore";
 
-class AuthorForm extends Component {
+class BookForm extends Component {
   constructor() {
     super();
     this.state = {
-      first_name: "",
-      last_name: "",
-      imageUrl: "",
-      books: []
+      title: "",
+      color: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmmit() {
-    authorStore.addAuthor(this.state);
+    BookStore.addBook(this.state, this.props.author);
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: [e.target.value] });
+    this.setState({ [e.target.title]: [e.target.value] });
   }
 
   render() {
@@ -28,37 +26,25 @@ class AuthorForm extends Component {
         <form>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <span className="input-group-text">First Name</span>
+              <span className="input-group-text">Title</span>
             </div>
             <input
               type="text"
               className="form-control"
               value={this.state.first_name}
-              name="first_name"
+              name="title"
               onChange={event => this.handleChange(event)}
             />
           </div>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <span className="input-group-text">Last Name</span>
+              <span className="input-group-text">Color</span>
             </div>
             <input
               type="text"
               className="form-control"
               value={this.state.last_name}
-              name="last_name"
-              onChange={event => this.handleChange(event)}
-            />
-          </div>
-          <div className="input-group mb-3">
-            <div className="input-group-prepend">
-              <span className="input-group-text">Image URL</span>
-            </div>
-            <input
-              type="text"
-              className="form-control"
-              value={this.state.imageUrl}
-              name="imageUrl"
+              name="color"
               onChange={event => this.handleChange(event)}
             />
           </div>
@@ -69,4 +55,4 @@ class AuthorForm extends Component {
   }
 }
 
-export default AuthorForm;
+export default BookForm;

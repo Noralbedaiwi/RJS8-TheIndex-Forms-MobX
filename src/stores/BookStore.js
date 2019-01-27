@@ -36,6 +36,18 @@ class BookStore {
   getBooksByColor(color) {
     return this.filteredBooks.filter(book => book.color === color);
   }
+
+  addBook(newBook, author) {
+    newBook = {
+      ...newBook,
+      authors: [author]
+    };
+    instance
+      .post("/api/books/", newBook)
+      .then(res => res.data)
+      .then(book => (this.book = this.book.push(book)))
+      .catch(err => console.log(err));
+  }
 }
 
 decorate(BookStore, {

@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 // Components
 import AuthorCard from "./AuthorCard";
 import SearchBar from "./SearchBar";
-
+import AddAuthorCard from "./AddAuthorCard";
 // Store
 import authorStore from "./stores/AuthorStore";
 
@@ -18,6 +18,9 @@ class AuthorsList extends Component {
       <div>
         <h3>Authors</h3>
         <SearchBar store={authorStore} />
+        <div>
+          <AddAuthorCard />
+        </div>
         <div className="row">{authorCards}</div>
       </div>
     );

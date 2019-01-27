@@ -34,6 +34,14 @@ class AuthorStore {
   getAuthorById(id) {
     return this.authors.find(author => +author.id === +id);
   }
+
+  addAuthor(newAuthor) {
+    instance
+      .post("/api/authors/", newAuthor)
+      .then(res => res.data)
+      .then(author => (this.author = this.author.push(author)))
+      .catch(err => console.log(err));
+  }
 }
 
 decorate(AuthorStore, {
